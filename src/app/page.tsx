@@ -43,15 +43,11 @@ export default function Home() {
   const [guideLoading, setGuideLoading] = useState<Set<string>>(new Set());
   const [guideErr, setGuideErr] = useState<Record<string, string>>({});
 
-  // 반응형: 데스크톱(≥768px)은 랜딩, 모바일은 앱
-  const [entered, setEntered] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  // 랜딩(상세페이지) 표시 상태. 기본: 데스크톱은 랜딩, 모바일은 앱.
+  // DARI JAPAN 로고를 누르면 어느 기기에서든 상세페이지로 돌아감.
+  const [showLanding, setShowLanding] = useState(false);
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const apply = () => setIsDesktop(mq.matches);
-    apply();
-    mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
+    setShowLanding(window.matchMedia("(min-width: 768px)").matches);
   }, []);
 
   const set = (k: keyof JapanProfile, v: string) => setProfile((p) => ({ ...p, [k]: v }));
@@ -149,15 +145,15 @@ export default function Home() {
     </section>
   );
 
-  if (isDesktop && !entered) {
-    return <Landing onStart={() => setEntered(true)} />;
+  if (showLanding) {
+    return <Landing onStart={() => setShowLanding(false)} />;
   }
 
   return (
     <div className="phone">
       <header className="topbar">
         <button className="icon-btn" aria-label="menu">☰</button>
-        <span className="brand">DARI JAPAN</span>
+        <button className="brand-btn" onClick={() => setShowLanding(true)} title="상세페이지로"><img className="applogo" src="/dari-logo.png" alt="DARI JAPAN" /></button>
         <button className="icon-btn" aria-label="alerts">🔔</button>
       </header>
 
@@ -172,13 +168,7 @@ export default function Home() {
           <div className="stepbar"><div className="stepbar-fill" style={{ width: "100%" }} /></div>
 
           <div className="onb-illust">
-            <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <path d="M88 312 Q140 168 176 168 Q256 286 336 168 Q372 168 424 312" stroke="#fff" strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-              <line x1="176" y1="148" x2="176" y2="326" stroke="#fff" strokeWidth="14" strokeLinecap="round" />
-              <line x1="336" y1="148" x2="336" y2="326" stroke="#fff" strokeWidth="14" strokeLinecap="round" />
-              <line x1="80" y1="324" x2="432" y2="324" stroke="#fff" strokeWidth="16" strokeLinecap="round" />
-              <circle cx="256" cy="324" r="16" fill="#FBBF24" stroke="#fff" strokeWidth="6" />
-            </svg>
+            <img src="/dari-logo.png" alt="DARI" />
           </div>
 
           <h1 className="onb-title">환영합니다! 여정을 준비해볼까요?</h1>

@@ -1,22 +1,30 @@
 "use client";
 
+import { Icon } from "./icons";
+
+const ONBOARD = [
+  { ic: "graduation-cap", h: "학교 및 전공 입력", p: "진학 예정인 대학교와 전공을 입력하여 맞춤 정보를 받습니다." },
+  { ic: "calendar", h: "입국일 설정", p: "출국 및 입국 일정에 맞춰 D-Day 플랜이 자동 생성됩니다." },
+  { ic: "clipboard-list", h: "맞춤 플랜 생성", p: "비자, 주거, 수강신청 등 필수 단계별 플랜이 제공됩니다." },
+];
+
 const SOS = [
-  { ic: "🏥", label: "의료 / 병원", danger: true },
-  { ic: "🏛️", label: "행정 / 관공서" },
-  { ic: "🏠", label: "주거 / 부동산" },
-  { ic: "👥", label: "친구 / 교류" },
-  { ic: "🎓", label: "학업 / 수강" },
-  { ic: "💼", label: "알바 / 취업" },
-  { ic: "🏦", label: "금융 / 은행" },
-  { ic: "❓", label: "기타 문의" },
+  { ic: "heart-pulse", label: "의료 / 병원", danger: true },
+  { ic: "landmark", label: "행정 / 관공서" },
+  { ic: "home", label: "주거 / 부동산" },
+  { ic: "users", label: "친구 / 교류" },
+  { ic: "book-open", label: "학업 / 수강" },
+  { ic: "briefcase", label: "알바 / 취업" },
+  { ic: "banknote", label: "금융 / 은행" },
+  { ic: "help-circle", label: "기타 문의" },
 ];
 
 const REASONS = [
-  { ic: "🎯", h: "개인 맞춤형", p: "내 상황에 꼭 맞는 정보만 선별 제공" },
-  { ic: "⚡", h: "행동 중심", p: "단순 정보가 아닌 구체적인 실행 플랜" },
-  { ic: "🤝", h: "선배 연결", p: "경험자의 생생한 노하우 전수" },
-  { ic: "🧭", h: "전체 흐름 관리", p: "입국 전부터 졸업까지 원스톱 케어" },
-  { ic: "💓", h: "적응 상태 점검", p: "주기적인 멘탈 케어 및 진도 체크" },
+  { ic: "target", h: "개인 맞춤형", p: "내 상황에 꼭 맞는 정보만 선별 제공" },
+  { ic: "zap", h: "행동 중심", p: "단순 정보가 아닌 구체적인 실행 플랜" },
+  { ic: "award", h: "선배 연결", p: "경험자의 생생한 노하우 전수" },
+  { ic: "compass", h: "전체 흐름 관리", p: "입국 전부터 졸업까지 원스톱 케어" },
+  { ic: "activity", h: "적응 상태 점검", p: "주기적인 멘탈 케어 및 진도 체크" },
 ];
 
 const MENTORS = [
@@ -29,18 +37,21 @@ export default function Landing({ onStart }: { onStart: () => void }) {
   return (
     <div className="landing">
       <header className="lhead">
-        <span className="brand">DARI JAPAN</span>
+        <img className="llogo" src="/dari-logo.png" alt="DARI JAPAN" />
         <button className="lbtn primary" onClick={onStart}>시작하기</button>
       </header>
 
       {/* Hero */}
       <section className="lhero">
-        <span className="badge">🎓 유학생 맞춤형 솔루션</span>
-        <h1>일본 유학의 첫걸음,<br /><span className="accent">AI와 선배가 함께합니다</span></h1>
-        <p className="sub">복잡한 서류 준비부터 현지 정착, 학업 고민까지. 다리재팬이 당신의 든든한 다리가 되어드립니다.</p>
-        <div className="cta-row">
-          <button className="lbtn primary" onClick={onStart}>지금 시작하기 <span>→</span></button>
-          <button className="lbtn ghost" onClick={onStart}>서비스 둘러보기</button>
+        <div className="lhero-glow" aria-hidden />
+        <div className="lhero-inner">
+          <span className="badge"><Icon name="graduation-cap" size={15} /> 유학생 맞춤형 솔루션</span>
+          <h1>일본 유학의 첫걸음,<br /><span className="accent">AI와 선배가 함께합니다</span></h1>
+          <p className="sub">복잡한 서류 준비부터 현지 정착, 학업 고민까지. 다리재팬이 당신의 든든한 다리가 되어드립니다.</p>
+          <div className="cta-row">
+            <button className="lbtn primary" onClick={onStart}>지금 시작하기 <Icon name="arrow-right" size={18} /></button>
+            <button className="lbtn ghost" onClick={onStart}>서비스 둘러보기</button>
+          </div>
         </div>
       </section>
 
@@ -52,9 +63,13 @@ export default function Landing({ onStart }: { onStart: () => void }) {
             <p>학교, 전공, 입국일에 맞춘 완벽한 플랜을 경험하세요.</p>
           </div>
           <div className="lcards3">
-            <div className="lcard"><div className="ic">🏫</div><h4>학교 및 전공 입력</h4><p>진학 예정인 대학교와 전공을 입력하여 맞춤 정보를 받습니다.</p></div>
-            <div className="lcard"><div className="ic">📅</div><h4>입국일 설정</h4><p>출국 및 입국 일정에 맞춰 D-Day 플랜이 자동 생성됩니다.</p></div>
-            <div className="lcard"><div className="ic">📋</div><h4>맞춤 플랜 생성</h4><p>비자, 주거, 수강신청 등 필수 단계별 플랜이 제공됩니다.</p></div>
+            {ONBOARD.map((c) => (
+              <div className="lcard" key={c.h}>
+                <div className="ic"><Icon name={c.ic} size={26} /></div>
+                <h4>{c.h}</h4>
+                <p>{c.p}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -67,20 +82,23 @@ export default function Landing({ onStart }: { onStart: () => void }) {
             <p>입국 전부터 학기 중까지 놓치지 말아야 할 필수 항목들입니다.</p>
           </div>
           <div className="lcheck-row">
-            <div className="lcheck-img" />
+            <div className="lvisual v-indigo">
+              <div className="lvisual-ic"><Icon name="plane" size={36} /></div>
+              <span className="lvisual-cap">입국 전 준비</span>
+            </div>
             <div className="lcheck-body">
               <h4>입국 전</h4>
               <ul>
-                <li><span className="ck">✓</span> 비자 발급 및 서류 준비</li>
-                <li><span className="ck">✓</span> 기숙사 신청 또는 방 구하기 (주거 준비)</li>
-                <li><span className="ck">✓</span> 항공권 예매 및 짐 싸기</li>
+                <li><span className="ck"><Icon name="check" size={16} /></span> 비자 발급 및 서류 준비</li>
+                <li><span className="ck"><Icon name="check" size={16} /></span> 기숙사 신청 또는 방 구하기 (주거 준비)</li>
+                <li><span className="ck"><Icon name="check" size={16} /></span> 항공권 예매 및 짐 싸기</li>
               </ul>
             </div>
           </div>
           <div className="lcards3">
-            <div className="lcard"><h4>도착 직후</h4><ul><li>• 재류카드 주소 등록</li><li>• 국민건강보험 가입</li><li>• 휴대폰 개통 및 은행 계좌 개설</li></ul></div>
-            <div className="lcard"><h4>첫 한 달</h4><ul><li>• 수강신청 및 오리엔테이션 참석</li><li>• 교통 패스 (정기권) 구매</li><li>• 동아리 탐색 및 생필품 구매</li></ul></div>
-            <div className="lcard"><h4>학기 중</h4><ul><li>• 중간/기말 고사 준비</li><li>• 아르바이트 (자격외활동허가) 구하기</li><li>• 선배 멘토링 참여</li></ul></div>
+            <div className="lcard phase"><span className="ph-tag">도착 직후</span><ul><li>재류카드 주소 등록</li><li>국민건강보험 가입</li><li>휴대폰 개통 및 은행 계좌 개설</li></ul></div>
+            <div className="lcard phase"><span className="ph-tag">첫 한 달</span><ul><li>수강신청 및 오리엔테이션 참석</li><li>교통 패스 (정기권) 구매</li><li>동아리 탐색 및 생필품 구매</li></ul></div>
+            <div className="lcard phase"><span className="ph-tag">학기 중</span><ul><li>중간/기말 고사 준비</li><li>아르바이트 (자격외활동허가) 구하기</li><li>선배 멘토링 참여</li></ul></div>
           </div>
         </div>
       </section>
@@ -90,7 +108,7 @@ export default function Landing({ onStart }: { onStart: () => void }) {
         <div className="inner">
           <div className="lnotice">
             <div className="txt">
-              <span className="pill-tag">📑 AI 번역 &amp; 분석</span>
+              <span className="pill-tag"><Icon name="scan-text" size={15} /> AI 번역 &amp; 분석</span>
               <h3>복잡한 일본어 공지,<br />AI가 바로 해결해 드립니다.</h3>
               <p>학교에서 온 우편물이나 게시판의 일본어 공지문을 스캔하세요. 단순 번역을 넘어, <strong>무엇을, 언제까지 해야 하는지</strong> 실행 가능한 To-Do 리스트로 변환해 줍니다.</p>
               <ul className="steps">
@@ -99,7 +117,10 @@ export default function Landing({ onStart }: { onStart: () => void }) {
                 <li><span className="n">3</span> 캘린더 연동 및 할 일 추가</li>
               </ul>
             </div>
-            <div className="visual">📄</div>
+            <div className="lvisual v-dark">
+              <div className="lvisual-ic"><Icon name="scan-text" size={40} /></div>
+              <span className="lvisual-cap">공지문 스캔 → To-Do</span>
+            </div>
           </div>
         </div>
       </section>
@@ -116,16 +137,16 @@ export default function Landing({ onStart }: { onStart: () => void }) {
               <div className="lcriteria">
                 <h4>매칭 기준</h4>
                 <ul>
-                  <li>같은 대학교 / 학부 <span className="ok">✓</span></li>
-                  <li>유사한 진로 목표 <span className="ok">✓</span></li>
-                  <li>거주 지역 (관동/관서 등) <span className="ok">✓</span></li>
-                  <li>관심사 및 취미 <span className="ok">✓</span></li>
+                  <li>같은 대학교 / 학부 <span className="ok"><Icon name="check" size={16} /></span></li>
+                  <li>유사한 진로 목표 <span className="ok"><Icon name="check" size={16} /></span></li>
+                  <li>거주 지역 (관동/관서 등) <span className="ok"><Icon name="check" size={16} /></span></li>
+                  <li>관심사 및 취미 <span className="ok"><Icon name="check" size={16} /></span></li>
                 </ul>
               </div>
               <div className="lmentor-cards">
                 {MENTORS.map((m) => (
                   <div className="lmentor-card" key={m.sch}>
-                    <div className="ava">🧑‍🎓</div>
+                    <div className="ava"><Icon name="user" size={24} /></div>
                     <div className="sch">{m.sch}</div>
                     <div className="maj">{m.maj}</div>
                     <button className="pb" onClick={onStart}>프로필 보기</button>
@@ -133,7 +154,10 @@ export default function Landing({ onStart }: { onStart: () => void }) {
                 ))}
               </div>
             </div>
-            <div className="right" />
+            <div className="lvisual v-violet">
+              <div className="lvisual-ic"><Icon name="users" size={40} /></div>
+              <span className="lvisual-cap">선배 ↔ 후배 연결</span>
+            </div>
           </div>
         </div>
       </section>
@@ -148,7 +172,7 @@ export default function Landing({ onStart }: { onStart: () => void }) {
           <div className="lsos-grid">
             {SOS.map((s) => (
               <button className={`lsos-btn ${s.danger ? "danger" : ""}`} key={s.label} onClick={onStart}>
-                <span className="ic">{s.ic}</span>{s.label}
+                <span className="ic"><Icon name={s.ic} size={24} /></span>{s.label}
               </button>
             ))}
           </div>
@@ -162,7 +186,7 @@ export default function Landing({ onStart }: { onStart: () => void }) {
           <div className="lreason-grid">
             {REASONS.map((r) => (
               <div className="lreason" key={r.h}>
-                <div className="ic">{r.ic}</div>
+                <div className="ic"><Icon name={r.ic} size={26} /></div>
                 <h4>{r.h}</h4>
                 <p>{r.p}</p>
               </div>
@@ -175,7 +199,7 @@ export default function Landing({ onStart }: { onStart: () => void }) {
       <footer className="lfoot">
         <div className="inner">
           <div>
-            <div className="brand">DARI JAPAN</div>
+            <img className="lfoot-logo" src="/dari-logo.png" alt="DARI JAPAN" />
             <div className="tag">일본 유학의 첫걸음, AI와 선배가 함께합니다.</div>
           </div>
           <div className="links">

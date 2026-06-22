@@ -68,10 +68,10 @@ button { font-family: inherit; cursor: pointer; }
 
 .onb-illust {
   width: 100%; aspect-ratio: 16/9; border-radius: 16px; margin-bottom: 28px;
-  background: linear-gradient(135deg, var(--primary), #2563eb 60%, #06b6d4);
+  background: #fff; border: 1px solid var(--outline-variant);
   display: flex; align-items: center; justify-content: center;
 }
-.onb-illust svg { width: 60%; height: 60%; }
+.onb-illust img { height: 90%; width: auto; object-fit: contain; }
 .onb-title { font-size: 24px; font-weight: 600; text-align: center; margin-bottom: 6px; }
 .onb-sub { font-size: 16px; color: var(--on-surface-variant); text-align: center; margin: 0 0 28px; }
 
@@ -304,3 +304,77 @@ button { font-family: inherit; cursor: pointer; }
   .lcheck-row, .lnotice, .lmentor { flex-direction: column; }
   .lhero h1 { font-size: 34px; }
 }
+
+/* clickable brand (return to landing on web) */
+.brand-btn { background: none; border: 0; padding: 0; cursor: pointer; }
+
+/* desktop: show the mobile app as an intentional framed preview */
+@media (min-width: 768px) {
+  body { background: linear-gradient(135deg, #e7edff 0%, #eef6f4 100%); }
+  .phone { box-shadow: 0 12px 60px rgba(13, 41, 120, 0.16); border-left: 1px solid rgba(197,197,211,.45); border-right: 1px solid rgba(197,197,211,.45); }
+}
+
+/* landing on phone (reachable via DARI JAPAN logo) → single column */
+@media (max-width: 560px) {
+  .lhead { padding: 12px 20px; }
+  .lhero { padding: 60px 20px 78px; }
+  .lhero h1 { font-size: 30px; }
+  .lsec { padding: 56px 20px; }
+  .lreasons { padding: 56px 20px; }
+  .lfoot { padding: 32px 20px; }
+  .lcards3, .lsos-grid, .lreason-grid { grid-template-columns: 1fr; }
+  .lmentor-cards { flex-direction: column; }
+}
+
+/* ===== Landing polish (ui-ux-pro-max): SVG icons · visuals · hero · hover ===== */
+/* hero refinement */
+.lhero { background: radial-gradient(120% 90% at 50% -8%, #dde6ff 0%, #f1e7ef 46%, var(--surface) 78%); }
+.lhero-glow { position: absolute; top: -130px; left: 50%; transform: translateX(-50%); width: 680px; height: 360px; background: radial-gradient(closest-side, rgba(13,41,120,.16), transparent 70%); filter: blur(18px); pointer-events: none; }
+.lhero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+.lhero .badge svg, .lbtn svg, .pill-tag svg { flex-shrink: 0; }
+
+/* onboarding icon tiles */
+.lcard .ic { width: 56px; height: 56px; margin: 0 auto 16px; border-radius: 16px; background: var(--primary-fixed); color: var(--primary); display: flex; align-items: center; justify-content: center; }
+
+/* card hover (scale-feedback / elevation) */
+.lcard, .lsos-btn, .lmentor-card { transition: transform .15s ease, box-shadow .2s ease, background .15s; }
+@media (hover: hover) {
+  .lsec.white .lcard:hover, .lcard.phase:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -10px rgba(13,41,120,.18); }
+  .lsos-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -8px rgba(13,41,120,.16); }
+}
+
+/* phase cards */
+.lcard.phase { text-align: left; }
+.ph-tag { display: inline-block; font-size: 13px; font-weight: 700; color: var(--primary); background: var(--primary-fixed); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+.lcard.phase ul { margin: 0; padding: 0; list-style: none; }
+.lcard.phase li { font-size: 14px; color: var(--on-surface-variant); padding: 6px 0 6px 18px; position: relative; line-height: 1.45; }
+.lcard.phase li::before { content: ""; position: absolute; left: 2px; top: 12px; width: 6px; height: 6px; border-radius: 999px; background: var(--tertiary-fixed-dim); }
+
+/* check / criteria icons */
+.lcheck-body li .ck { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 999px; background: var(--tertiary-fixed); color: var(--tertiary-container); flex-shrink: 0; }
+.lcriteria li .ok { display: inline-flex; color: #16a34a; }
+
+/* intentional gradient visual cards (replace empty placeholder boxes) */
+.lvisual { flex: 1; border-radius: 18px; min-height: 248px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: #fff; position: relative; overflow: hidden; box-shadow: 0 12px 32px -12px rgba(13,41,120,.3); }
+.lvisual::after { content: ""; position: absolute; width: 220px; height: 220px; border-radius: 999px; background: rgba(255,255,255,.12); top: -70px; right: -60px; }
+.lvisual::before { content: ""; position: absolute; width: 150px; height: 150px; border-radius: 999px; background: rgba(255,255,255,.10); bottom: -50px; left: -40px; }
+.lvisual-ic { width: 82px; height: 82px; border-radius: 22px; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+.lvisual-cap { font-size: 15px; font-weight: 600; position: relative; z-index: 1; opacity: .95; }
+.lvisual.v-indigo { background: linear-gradient(140deg, #2a418f, #06b6d4); }
+.lvisual.v-violet { background: linear-gradient(140deg, #4f46e5, #a78bfa); }
+.lvisual.v-dark { background: linear-gradient(160deg, #111827, #0d2978); max-width: 380px; }
+
+/* sos / reason svg icons */
+.lsos-btn .ic { color: var(--primary); display: flex; }
+.lsos-btn.danger .ic { color: #b3261e; }
+.lreason .ic { color: #fff; }
+
+/* mentor avatar */
+.lmentor-card .ava { color: var(--outline); }
+.lmentor-card .pb { transition: opacity .15s; }
+.lmentor-card .pb:hover { opacity: .9; }
+
+/* brand logo image */
+.llogo { height: 42px; width: auto; display: block; }
+.lfoot-logo { height: 56px; width: auto; display: block; }
+.applogo { height: 40px; width: auto; display: block; }
