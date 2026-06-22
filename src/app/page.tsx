@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import Landing from "./Landing";
 import {
   PHASE_LABEL,
   type JapanPlan,
@@ -41,6 +42,17 @@ export default function Home() {
   const [guideOpen, setGuideOpen] = useState<Set<string>>(new Set());
   const [guideLoading, setGuideLoading] = useState<Set<string>>(new Set());
   const [guideErr, setGuideErr] = useState<Record<string, string>>({});
+
+  // 반응형: 데스크톱(≥768px)은 랜딩, 모바일은 앱
+  const [entered, setEntered] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const apply = () => setIsDesktop(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
 
   const set = (k: keyof JapanProfile, v: string) => setProfile((p) => ({ ...p, [k]: v }));
 
@@ -136,6 +148,10 @@ export default function Home() {
       <div className="progress"><div className="progress-fill" style={{ width: `${pct}%` }} /></div>
     </section>
   );
+
+  if (isDesktop && !entered) {
+    return <Landing onStart={() => setEntered(true)} />;
+  }
 
   return (
     <div className="phone">
