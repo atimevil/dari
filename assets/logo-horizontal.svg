@@ -1,0 +1,29 @@
+<svg width="1000" height="320" viewBox="0 0 1000 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="다리 DARI - 유학생 비자·체류 AI">
+  <defs>
+    <linearGradient id="dariBgH" x1="48" y1="52" x2="268" y2="272" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- icon (suspension bridge) scaled to 220x220 -->
+  <g transform="translate(48,52) scale(0.42)">
+    <rect width="512" height="512" rx="116" fill="url(#dariBgH)"/>
+    <path d="M88 312 Q140 168 176 168 Q256 286 336 168 Q372 168 424 312" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="176" y1="148" x2="176" y2="326" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+    <line x1="336" y1="148" x2="336" y2="326" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+    <g stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.85">
+      <line x1="216" y1="212" x2="216" y2="320"/>
+      <line x1="256" y1="227" x2="256" y2="320"/>
+      <line x1="296" y1="212" x2="296" y2="320"/>
+    </g>
+    <line x1="80" y1="324" x2="432" y2="324" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="256" cy="324" r="16" fill="#FBBF24" stroke="#FFFFFF" stroke-width="6"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="304" y="170" font-family="'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif" font-size="132" font-weight="800" fill="#0F172A">다리</text>
+  <!-- subline -->
+  <text x="308" y="226" font-family="'Poppins','Pretendard','Noto Sans KR',sans-serif" font-size="34" font-weight="700" letter-spacing="8" fill="#4F46E5">DARI</text>
+  <text x="430" y="226" font-family="'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif" font-size="30" font-weight="500" fill="#64748B">· 유학생 비자·체류 AI 도우미</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="다리 DARI">
+  <defs>
+    <linearGradient id="dariBg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#dariBg)"/>
+  <path d="M88 312 Q140 168 176 168 Q256 286 336 168 Q372 168 424 312"
+        stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="176" y1="148" x2="176" y2="326" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+  <line x1="336" y1="148" x2="336" y2="326" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+  <g stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.85">
+    <line x1="216" y1="212" x2="216" y2="320"/>
+    <line x1="256" y1="227" x2="256" y2="320"/>
+    <line x1="296" y1="212" x2="296" y2="320"/>
+  </g>
+  <line x1="80" y1="324" x2="432" y2="324" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="256" cy="324" r="16" fill="#FBBF24" stroke="#FFFFFF" stroke-width="6"/>
+</svg>

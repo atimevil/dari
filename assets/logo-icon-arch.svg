@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="다리 DARI">
+  <defs>
+    <linearGradient id="dariBgArch" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#dariBgArch)"/>
+  <!-- road deck -->
+  <line x1="96" y1="248" x2="416" y2="248" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+  <!-- arch span -->
+  <path d="M128 322 Q256 168 384 322" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <!-- piers -->
+  <line x1="128" y1="322" x2="128" y2="364" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+  <line x1="384" y1="322" x2="384" y2="364" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+  <!-- water line -->
+  <line x1="104" y1="364" x2="408" y2="364" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+  <!-- traveler (student crossing) -->
+  <circle cx="256" cy="248" r="15" fill="#FBBF24" stroke="#FFFFFF" stroke-width="6"/>
+</svg>
