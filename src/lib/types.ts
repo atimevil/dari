@@ -57,7 +57,7 @@ export interface JapanPlan {
 export const PHASE_LABEL: Record<PlanPhase, string> = {
   before: "입국 전",
   arrival: "도착 직후",
-  settling: "정착 중",
+  settling: "첫 학기",
 };
 
 // ===== 항목별 AI 가이드 =====

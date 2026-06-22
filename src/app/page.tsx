@@ -19,7 +19,7 @@ const VISA_OPTS: { value: JapanProfile["visaType"]; label: string }[] = [
 ];
 
 const PHASES: PlanPhase[] = ["before", "arrival", "settling"];
-type Tab = "home" | "tasks" | "scanner" | "mentors" | "profile";
+type Tab = "home" | "tasks" | "scanner" | "profile";
 
 function dday(arrival: string): number | null {
   const t = new Date(arrival + "T00:00:00");
@@ -315,22 +315,12 @@ export default function Home() {
               </div>
             </div>
           )}
-          {tab === "mentors" && (
-            <div className="screen">
-              <div className="placeholder">
-                <div className="ph-emoji">🎓</div>
-                <h3>선배 멘토 매칭</h3>
-                <p>같은 학교·진로의 선배와 연결.<br />데모 목업 · 준비 중입니다.</p>
-              </div>
-            </div>
-          )}
 
           {/* ===== Bottom nav (clickable) ===== */}
           <nav className="bottomnav">
             <button className={`navitem ${tab === "home" ? "active" : ""}`} onClick={() => setTab("home")}><span className="ico">🏠</span>Home</button>
             <button className={`navitem ${tab === "tasks" ? "active" : ""}`} onClick={() => setTab("tasks")}><span className="ico">✅</span>Tasks</button>
-            <button className={`navitem ${tab === "scanner" ? "active" : ""}`} onClick={() => setTab("scanner")}><span className="ico">📄</span>Scanner</button>
-            <button className={`navitem ${tab === "mentors" ? "active" : ""}`} onClick={() => setTab("mentors")}><span className="ico">🎓</span>Mentors</button>
+            <button className={`navitem ${tab === "scanner" ? "active" : ""}`} onClick={() => setTab("scanner")}><span className="ico">📄</span>공지AI</button>
             <button className={`navitem ${tab === "profile" ? "active" : ""}`} onClick={() => setTab("profile")}><span className="ico">👤</span>Profile</button>
           </nav>
         </>

@@ -282,7 +282,8 @@ button { font-family: inherit; cursor: pointer; }
 .lreasons { background: var(--primary); color: #fff; padding: 84px 40px; }
 .lreasons .inner { max-width: 1040px; margin: 0 auto; }
 .lreasons h2 { text-align: center; font-size: 28px; font-weight: 700; margin-bottom: 48px; }
-.lreason-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.lreason-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; }
+.lcheck-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .lreason { text-align: center; }
 .lreason .ic { width: 60px; height: 60px; border-radius: 999px; background: rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 14px; }
 .lreason h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
@@ -322,7 +323,7 @@ button { font-family: inherit; cursor: pointer; }
   .lsec { padding: 56px 20px; }
   .lreasons { padding: 56px 20px; }
   .lfoot { padding: 32px 20px; }
-  .lcards3, .lsos-grid, .lreason-grid { grid-template-columns: 1fr; }
+  .lcards3, .lsos-grid, .lreason-grid, .lcheck-cards { grid-template-columns: 1fr; }
   .lmentor-cards { flex-direction: column; }
 }
 
