@@ -21,6 +21,22 @@ const VISA_OPTS: { value: JapanProfile["visaType"]; label: string }[] = [
 const PHASES: PlanPhase[] = ["before", "arrival", "settling"];
 type Tab = "home" | "tasks" | "scanner" | "profile";
 
+type Plan = {
+  id: string;
+  name: string;
+  price: string;   // 총 결제액
+  per: string;     // 월 환산
+  off: string | null;
+  tag: "추천" | "BEST" | null;
+  desc: string;
+};
+const PLANS: Plan[] = [
+  { id: "m1", name: "1개월권", price: "9,900",  per: "월 9,900원", off: null,  tag: null,   desc: "급하게 준비하거나 먼저 체험해보고 싶을 때" },
+  { id: "m3", name: "3개월권", price: "24,900", per: "월 8,300원", off: "16%", tag: null,   desc: "입국 직전 집중 준비 기간" },
+  { id: "m6", name: "6개월권", price: "44,900", per: "월 7,480원", off: "25%", tag: "추천", desc: "입국 전~도착 핵심 준비기를 모두 커버" },
+  { id: "y1", name: "1년권",   price: "69,900", per: "월 5,825원", off: "41%", tag: "BEST", desc: "첫 학기 정착까지 + 1년 안심 이용" },
+];
+
 function dday(arrival: string): number | null {
   const t = new Date(arrival + "T00:00:00");
   if (isNaN(t.getTime())) return null;
@@ -42,6 +58,9 @@ export default function Home() {
   const [guideOpen, setGuideOpen] = useState<Set<string>>(new Set());
   const [guideLoading, setGuideLoading] = useState<Set<string>>(new Set());
   const [guideErr, setGuideErr] = useState<Record<string, string>>({});
+
+  // 요금제(데모) — 선택한 플랜 (실결제 미연동)
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
   // 랜딩(상세페이지) 표시 상태. 기본: 데스크톱은 랜딩, 모바일은 앱.
   // DARI JAPAN 로고를 누르면 어느 기기에서든 상세페이지로 돌아감.
@@ -319,7 +338,43 @@ export default function Home() {
                 <div className="prow"><span className="pk">입국 예정일</span><span className="pv">{profile.arrivalDate || "-"}{d !== null && d >= 0 ? ` (D-${d})` : ""}</span></div>
                 <div className="prow"><span className="pk">체크리스트</span><span className="pv">{total}개 · 준비율 {pct}%</span></div>
               </div>
-              <button className="btn-primary" onClick={() => setStep("onboarding")}>정보 수정 · 플랜 다시 생성</button>
+              <button className="btn-ghost" onClick={() => setStep("onboarding")}>정보 수정 · 플랜 다시 생성</button>
+
+              {/* ===== 요금제 (Pricing) ===== */}
+              <h2 className="section-title" style={{ marginTop: 28 }}><span className="badge">💎</span>요금제</h2>
+              <div className="plan-status">
+                <div>
+                  <span className="ps-now">현재 <b>무료 플랜</b> 이용 중</span>
+                  <p className="ps-sub">온보딩·체크리스트는 무료, AI 가이드·공지 해석은 유료입니다.</p>
+                </div>
+              </div>
+
+              <div className="plan-list">
+                {PLANS.map((pl) => {
+                  const active = selectedPlan === pl.id;
+                  const rec = pl.tag === "추천";
+                  return (
+                    <div key={pl.id} className={`plan ${rec ? "rec" : ""} ${active ? "picked" : ""}`}>
+                      {pl.tag && <span className={`plan-tag ${pl.tag === "BEST" ? "best" : ""}`}>{pl.tag}</span>}
+                      <div className="plan-top">
+                        <span className="plan-name">{pl.name}</span>
+                        {pl.off && <span className="plan-off">{pl.off}↓</span>}
+                      </div>
+                      <div className="plan-price"><b>{pl.price}</b>원</div>
+                      <div className="plan-per">{pl.per}</div>
+                      <p className="plan-desc">{pl.desc}</p>
+                      <button className={`plan-btn ${rec ? "primary" : ""}`} onClick={() => setSelectedPlan(pl.id)}>
+                        {active ? "✓ 선택됨" : "구독하기"}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {selectedPlan && (
+                <p className="plan-note">🧪 데모 화면입니다 · 결제 연동은 준비 중입니다.</p>
+              )}
+              <p className="disclaimer" style={{ marginTop: 12 }}>가격은 베타 기준이며 변동될 수 있습니다.</p>
             </div>
           )}
 
