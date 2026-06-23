@@ -132,17 +132,34 @@ export default function Home() {
   const countOf = (p: PlanPhase) => plan?.tasks.filter((t) => t.phase === p).length ?? 0;
   const visaLabel = VISA_OPTS.find((o) => o.value === profile.visaType)?.label ?? profile.visaType;
 
-  const heroEl = (
+  const heroBlock = (withProgress: boolean) => (
     <section className="hero">
       <p className="hero-kicker">Your Journey</p>
       <h1 className="hero-dday">{d === null ? "입국 예정" : d >= 0 ? `D-${d} 입국 예정` : `D+${Math.abs(d)} (입국함)`}</h1>
       <p className="hero-sub">{plan?.summary || "일본 생활 준비를 시작합니다."}</p>
-      <div className="progress-row">
-        <span className="lbl">정착 준비율</span>
-        <span className="pct">{pct}%</span>
-      </div>
-      <div className="progress"><div className="progress-fill" style={{ width: `${pct}%` }} /></div>
+      {withProgress && (
+        <>
+          <div className="progress-row">
+            <span className="lbl">정착 준비율</span>
+            <span className="pct">{pct}%</span>
+          </div>
+          <div className="progress"><div className="progress-fill" style={{ width: `${pct}%` }} /></div>
+        </>
+      )}
     </section>
+  );
+
+  // 스크롤해도 상단에 고정되는 준비율 스트립 (Tasks 화면 전용)
+  const progressStrip = (
+    <div className="progress-strip">
+      <div className="bar-card">
+        <div className="srow">
+          <span className="lbl">정착 준비율</span>
+          <span className="pct">{done.size}/{total} · {pct}%</span>
+        </div>
+        <div className="progress"><div className="progress-fill" style={{ width: `${pct}%` }} /></div>
+      </div>
+    </div>
   );
 
   if (showLanding) {
@@ -214,7 +231,8 @@ export default function Home() {
           {/* ===== Tasks ===== */}
           {tab === "tasks" && (
             <div className="screen">
-              {heroEl}
+              {heroBlock(false)}
+              {progressStrip}
               <h2 className="section-title"><span className="badge">🤖</span>AI 맞춤 체크리스트</h2>
               <div className="pills">
                 {PHASES.map((p) => (
@@ -284,7 +302,7 @@ export default function Home() {
           {/* ===== Home ===== */}
           {tab === "home" && (
             <div className="screen">
-              {heroEl}
+              {heroBlock(true)}
               <p className="home-msg">아래 버튼으로 오늘의 할 일을 확인하세요. 정보를 바꾸면 Profile에서 플랜을 다시 만들 수 있어요.</p>
               <button className="btn-primary" onClick={() => setTab("tasks")}>오늘의 체크리스트 보기 →</button>
             </div>
